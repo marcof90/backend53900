@@ -1,6 +1,7 @@
 const express = require('express')
 const morgan = require('morgan')
 const mongoose = require('mongoose')
+const cors = require('cors')
 const itemRoutes = require('./routes/item.routes')
 const authRoutes = require('./routes/auth.routes')
 const incomeRoutes = require('./routes/income.routes')
@@ -19,6 +20,7 @@ app.use(express.urlencoded({
     extended: false
 }))
 app.use('/documentation', express.static(path.join(__dirname, '../doc/')))
+app.use(cors())
 
 //rutas
 app.use('/items', itemRoutes)
